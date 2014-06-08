@@ -1,0 +1,18 @@
+<form action="" name="questionsForm" ng-submit="questionsSubmit()">
+    <ul>
+        <li ng-repeat="item in questions">
+            <p>{{item.id}}&nbsp;{{item.question}}</p>
+
+            <p>{{item.desc}}</p>
+
+            <p>
+                <label for="" data-ng-repeat="ans in item.answers" style="display: block;" ng-switch on="{{item.multiply}}">
+                    <input ng-switch-when="true" type="checkbox" ng-model="form.checkbox[item.id+'_'+ ans.id]" name="question[{{item.id}}][]" />
+                    <input ng-switch-default type="radio" ng-model="form.radio[item.id]" name="question.{{item.id}}" value="{{ans.id}}"/>
+                    <label for="">{{ans.name}}</label>
+                </label>
+            </p>
+        </li>
+    </ul>
+    <button class="pure-button pure-button-primary">Finish</button>
+</form>
